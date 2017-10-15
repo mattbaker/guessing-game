@@ -13,7 +13,13 @@ defmodule GuessingGame do
   end
 
   def get_guess() do
-    String.to_integer(String.trim(IO.gets("Guess a number: ")))
+    input = String.trim(IO.gets("Guess a number: "))
+    if Regex.match?(~r/^[0-9]+$/, input) do
+      String.to_integer(input)
+    else
+      IO.puts("Input only digits please (0-9)")
+      get_guess()
+    end
   end
 
   def play() do
