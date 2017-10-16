@@ -26,6 +26,13 @@ defmodule GuessingGame do
     end
   end
 
+  def print_turns(turns) do
+    IO.puts("You have #{turns} turns left")
+    if (turns == 0) do
+      IO.puts("You lose")
+    end
+  end
+
   def get_guess() do
     IO.gets("Guess a number: ") |> String.trim |> String.to_integer
   end
@@ -41,13 +48,9 @@ defmodule GuessingGame do
   end
 
   def main(number, turns) do
-    IO.puts("You have #{turns} turns left")
-    if (turns > 0) do
-      if (!turn(number)) do
-        main(number, turns-1)
-      end
-    else
-      IO.puts("You lose")
+    print_turns(turns)
+    if (turns > 0 && !turn(number)) do
+      main(number, turns-1)
     end
   end
 end
