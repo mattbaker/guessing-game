@@ -32,10 +32,11 @@ defmodule GuessingGame do
     print_turns(turns)
     outcome = get_guess() |> compare(number)
     print_outcome(outcome)
-    if (outcome != :equal) do
-      main(number, turns-1)
-    end
+    again?(number, turns, outcome)
   end
+
+  def again?(_, _, true), do: nil
+  def again?(number, turns, false), do: main(number,turns)
 
 end
 
