@@ -1,5 +1,10 @@
 defmodule GuessingGame do
-  
+  @moduledoc """
+  A simple Elixir-based guessing game for guessing a number between 1 and 100.
+  """
+
+  @ver 0.1
+
   def runner do
     start_game
     answer = generate_answer
@@ -41,8 +46,6 @@ defmodule GuessingGame do
         IO.puts("Correct! #{guess} is the correct answer")
     end
   end
-
-  #TODO: End game if answer correct
   #TODO: Implement chances
 end
 
