@@ -3,6 +3,10 @@ defmodule GuessingGame do
   def runner do
     start_game
     answer = generate_answer
+    game_loop(answer)
+  end
+
+  defp game_loop(answer) do
     get_user_guess
     |>check_user_answer(answer)
   end
@@ -26,10 +30,13 @@ defmodule GuessingGame do
     cond do
       guess > 100 or guess < 0 ->
         IO.puts("Please guess within 1 and 100")
+        game_loop(answer)
       guess < answer ->
         IO.puts("Sorry, #{guess} is too low.")
+        game_loop(answer)
       guess > answer ->
         IO.puts("Sorry, #{guess} is too high.")
+        game_loop(answer)
       guess == answer ->
         IO.puts("Correct! #{guess} is the correct answer")
     end
