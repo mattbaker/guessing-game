@@ -1,8 +1,7 @@
 defmodule GuessingGame do
 
   #TODO: Greet player, explain game
-  #TODO: Pick random number
-  def generate_answer do
+  defp generate_answer do
     :rand.uniform(100)
   end
   #TODO: Get user guess
@@ -27,4 +26,6 @@ defmodule GuessingGame do
   #TODO: Implement chances
 
 end
+
+GuessingGame.generate_answer |> IO.puts
 
